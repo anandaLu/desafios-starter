@@ -11,15 +11,26 @@ function buscarApi(){
     
     //primeira parte - Quando dá certo(response)
     .then(function(response){
+
         //criando variável resultado e atribuindo o valor do repos_url
-        var resultado = response.data.repos_url;
+        setTimeout(function(){
+            var resultado = response.data.repos_url;
         //exibindo no console
-        console.log(resultado);
+            console.log(resultado);
         //atribui o valor da variavel resultado à variável textElement
-        var textElement = document.createTextNode(resultado);
+            var textElement = document.createTextNode(resultado);
         //atribui textElement como filho do elemento paraElement
-        paraElement.appendChild(textElement);
+            paraElement.appendChild(textElement);
+
+            var listElement = document.createElement("li");
+            listElement.appendChild(paraElement);
+
+            var ulElement = document.querySelector("ul");
+            ulElement.appendChild(listElement);
+
+            document.querySelector('input').value = "";
         
+        }, 200);
     })
     //caso dê errado...
     .catch(function(error){
